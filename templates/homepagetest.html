@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HomePage</title>
+    <link rel="stylesheet" href="static/bootstrap-5.0.2-dist/css/bootstrap.min.css">
+    <script src="static/bootstrap-5.0.2-dist/js/bootstrap.min.js"></script>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
+        }
+        main {
+            flex: 1;
+        }
+        .bg-image-section {
+            background-image: url('static/images/photo-1460472178825-e5240623afd5.jpeg'); /* Replace with the actual path to your image */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            color: white; /* Adjust text color for visibility */
+            height: 100vh;
+        }
+    </style>
+</head>
+<body>
+
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand logo text-primary" href="#">
+                <span class="fw-bold fs-3">Well<span class="text-dark">Come</span></span>
+            </a>
+            <div style="float: right;" class="navbar-nav ms-auto"> 
+                <button class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#loginModal">Sign in</button>
+              </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#footeeer">About Us</a>
+              </li>
+            </ul>
+          </div>
+          
+        </div>
+      </nav>
+    <!--Show case-->
+    <div class="bg-image-section bg-dark text-light p-5 text-center text-sm-start" >
+        {% if messages %}
+{% for message in messages %}
+  <div class="alert alert-dismissible alert-success">
+    <button type="button" class="close"  data-bs-dismiss="alert">
+        ×
+    </button>
+    <strong>{{message}}</strong>
+    
+  </div>
+{% endfor %}
+{% endif %}
+    </div>
+    <!-- <section style="height: 850px;" class="bg-image-section bg-dark text-light p-5 text-center text-sm-start">
+        <div class="container" style="align-items: center;">
+            <div class="d-sm-flex">
+                 <div>
+                    <center>
+                    <h1>Become a <span class="text-warning"> Web Developer</span></h1>
+                    <p class="lead my-4">
+                        We Focus on teaching our Students the fundamentals of the latest and greatest technologies to prepare them for first dev role
+                    </p></center>
+                </div>
+                 <img src="" alt="" class="img-fluid w-50 ">
+            </div>
+        </div>
+    </section> -->
+
+<!-- Modal -->
+<div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="loginModalLabel">Login</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form method="post">
+                    {% csrf_token%}
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Username</label>
+                        {{ form.username }}
+                    </div>
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Password</label>
+                        {{ form.password }}
+                    </div>
+       
+                    <button type="submit" class="btn btn-primary">Login</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+    <footer class="bg-dark text-light py-4" id="footeeer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h3>About Us</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec.</p>
+                </div>
+                <div class="col-md-4">
+                    <h3>Quick Links</h3>
+                    <ul class="list-unstyled">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Services</a></li>
+                        <li><a href="#">Portfolio</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h3>Contact Us</h3>
+                    <p>123 Main Street, City<br>
+                    Email: info@example.com<br>
+                    Phone: (123) 456-7890</p>
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col">
+                    <p class="text-center">&copy; 2023 Your Company. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+</body>
+</html>

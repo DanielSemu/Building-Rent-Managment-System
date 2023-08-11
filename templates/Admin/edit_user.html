@@ -1,0 +1,12 @@
+{% extends 'Admin/base.html'%}
+
+
+{% block content %}
+
+<form action="" method="post">
+    {% csrf_token %}
+{{form}}
+<br>
+<button type="submit" class="btn btn-primary btn-large">Update</button>
+</form>
+{% endblock %}
